@@ -2,17 +2,15 @@ class Solution {
 public:
     int maxLengthBetweenEqualCharacters(string s) {
         
-       int count = -1;
-
-        for (int i = 0; i < s.length() - 1; i++) {
-            for (int j = i + 1; j < s.length(); j++) {
-                if (s[i] == s[j]) {
-                    // Update count if the substring length between equal characters is greater
-                    count = max(count, j - i - 1);
-                }
+      int maxi = -1, n = s.size();
+        unordered_map<char, int> mp;
+        for (int i = 0; i < n; i++) {
+            if (mp.find(s[i]) == mp.end())mp[s[i]]=i;
+             else{
+                int start = mp[s[i]],end = i;
+                maxi = max(maxi, end - start - 1);
             }
         }
-
-        return count;
+        return maxi;
     }
 };
