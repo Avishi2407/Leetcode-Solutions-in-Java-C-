@@ -10,17 +10,19 @@ public:
         for(auto a: mp){
             v.push_back(a.second);
         }
-        
+        int count =0; 
         sort(v.begin() , v.end());
-        int i = 0;
-        while (k > 0 && i < v.size()) {
-            if (v[i] <= k) {
-                k -= v[i];
-                i++;
-            } else {
-                break;
+        for(int i =0; i< v.size(); i++){
+            if(v[i] <= k ){
+                
+                k=k-v[i];
+                v[i] = 0;
             }
+            if(v[i]!= 0 ){
+                count ++;
+            }
+            
         }
-        return v.size() - i;
+        return count;
     }
 };
