@@ -1,14 +1,18 @@
 class Solution {
 public:
-    int removeElement(std::vector<int>& nums, int val) {
-       auto newEnd = std::remove(nums.begin(), nums.end(), val);
+    int removeElement(vector<int>& nums, int val) {
+         int n=nums.size();
+    int count =0;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]==val)
+            {
+                count++;
+                nums.erase(nums.begin()+i);
+                i--;
+            }
+        }
+        return n-count;
     
-    // Calculate the new size after removal
-    int newSize = std::distance(nums.begin(), newEnd);
-    
-    // Resize the vector to the new size
-    nums.resize(newSize);
-    
-    return newSize;
     }
 };
