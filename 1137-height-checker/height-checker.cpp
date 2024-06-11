@@ -1,19 +1,14 @@
 class Solution {
 public:
     int heightChecker(vector<int>& heights) {
-        vector<char> sorted(heights.begin(), heights.end());
-        sort(heights.begin(), heights.end());
-        int n=heights.size(), ans=0;
-        for(int i=0; i<n; i++)
-            ans+=(heights[i]!=sorted[i]);
-        return ans;      
+        vector<int> expected(heights.begin(), heights.end());
+        sort(expected.begin(), expected.end());
+        int count = 0;
+        for(int i =0; i<expected.size(); i++){
+            if(heights[i] != expected[i] ){
+                count ++;
+            }
+        }
+        return count;
     }
 };
-
-
-auto init = []() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-    return 'c';
-}();
