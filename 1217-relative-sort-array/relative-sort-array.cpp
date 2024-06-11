@@ -1,25 +1,28 @@
 class Solution {
 public:
     vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
-        vector<int> ans;
+        int maxelement = *max_element(arr1.begin(), arr1.end());
+        vector<int> count(maxelement + 1);
         
-        for(int i =0; i<arr2.size(); i++){
-            for(int j =0; j<arr1.size(); j++){
-                if(arr2[i] == arr1[j]){
-                    ans.push_back(arr1[j]);
-                    arr1[j] = -1;
-                }
+        for(int i :arr1){
+            count[i]++;
+        }
+        
+        vector<int> result;
+        
+        for(int i :arr2){
+            while(count[i]>0){
+                result.push_back(i);
+                count[i]--;
             }
         }
         
-        sort(arr1.begin(), arr1.end());
-        
-        for(int i =0; i< arr1.size(); i++){
-            if(arr1[i] != -1){
-                ans.push_back(arr1[i]);
+        for(int i =0; i<=maxelement;i++){
+            while(count[i] > 0){
+                result.push_back(i);
+                count[i]--;
             }
         }
-        
-        return ans;
+        return result;
     }
 };
