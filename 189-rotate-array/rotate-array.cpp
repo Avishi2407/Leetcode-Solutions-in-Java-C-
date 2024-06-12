@@ -8,17 +8,10 @@ public:
             return;
         }
         
-        int arr[k];
-        for(int i =0; i<k;i++){
-            arr[i] = nums[n-k+i];
-        }
+        reverse(nums.begin() , nums.end());
         
-        for(int i =n-k-1;i>=0;i--){
-            nums[i+k]=nums[i];
-        }
+        reverse(nums.begin(), nums.begin() + k);
         
-        for(int i =0; i<k;i++){
-            nums[i]=arr[i];
-        }
+        reverse(nums.begin()+k , nums.end());
     }
 };
