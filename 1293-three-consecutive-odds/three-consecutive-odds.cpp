@@ -1,12 +1,19 @@
 class Solution {
 public:
     bool threeConsecutiveOdds(vector<int>& arr) {
-    int len = 0;
-    for(int x: arr){
-        len = (x&1)? len+1:0;
-        if(len ==3) return 1;
+    int consecutiveOdds = 0; 
+
+    for (int num : arr) {
+        if (num % 2 != 0) { 
+            consecutiveOdds++; 
+            if (consecutiveOdds == 3) { 
+                return true; 
+            }
+        } else {
+            consecutiveOdds = 0; 
+        }
     }
-    return 0;
-}
-    
+
+    return false; 
+    }
 };
