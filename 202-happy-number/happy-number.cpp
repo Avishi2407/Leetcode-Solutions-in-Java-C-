@@ -9,8 +9,8 @@ public:
         
         while (n > 0) {
             int x = n % 10;
-            sum += x * x;
-            n /= 10;
+            sum = sum + ( x * x);
+            n = n/10;
         }
         
         n = sum;
