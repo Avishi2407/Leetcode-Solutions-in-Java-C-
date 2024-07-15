@@ -1,19 +1,25 @@
 class Solution {
 public:
     bool isSubsequence(string s, string t) {
-        int n = s.size();
-        int m = t.size();
         int i =0;
         int j =0;
-        
-        while (i < n && j < m) {
-        if (s[i] == t[j]) {
-            i++;
+        if(s.size() == NULL){
+            return true;
         }
-        j++;
-    }
-    
-    // If we have traversed all characters in s, then it's a subsequence of t
-    return i == n;
+        while(j<t.size()){
+            if(s[i] == t[j]){
+                i++;
+                j++;
+            }
+            else if(s[i] != t[j]){
+                j++;
+            }
+            
+            
+            if(i == s.size()){
+                return true;
+            }
+        }
+        return false;
     }
 };
